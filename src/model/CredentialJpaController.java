@@ -22,10 +22,15 @@ import model.exceptions.PreexistingEntityException;
  * @author Ejer
  */
 public class CredentialJpaController implements Serializable, CredentialManager{
-
+    
     public CredentialJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    
+  /*  public CredentialJpaController(){
+        this.emf = getEntityManager();
+    }  //evt controller
+  */  
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
