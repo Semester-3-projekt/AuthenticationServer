@@ -16,6 +16,7 @@ import model.CredentialJpaController;
  * @author Ejer
  */
 public class AuthenticationServer {
+ 
     
     /**
      * @param args the command line arguments
