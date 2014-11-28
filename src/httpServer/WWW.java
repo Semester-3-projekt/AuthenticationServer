@@ -6,9 +6,13 @@ import com.sun.net.httpserver.HttpServer;
 import control.CredentialManager;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import model.CredentialJpaController;
 
 public class WWW {
+    private static EntityManagerFactory emf = 
+        Persistence.createEntityManagerFactory("AuthenticationServerPU"); 
 
     private final HttpServer server;
 
@@ -46,17 +50,24 @@ public class WWW {
                  int lastIndex = path.lastIndexOf("/");
                  System.out.println("tester2");
                  if (lastIndex > 0) {
+                 System.out.println("entering if(lastIndex > 0)");    
                  String idStr = path.substring(lastIndex + 1);
-                 String user = idStr.split("+")[0];
-                 String pass = idStr.split("+")[1];
-                 //   int id = Integer.parseInt(idStr);
-                 //CredentialJpaController cont  = new CredentialJpaController();    //  skal der laves en ny instans af denne først ?? 
-                 // response =  CredentialJpaController.findCredential(user,pass); 
+                 System.out.println(idStr);  // kurt+xyz ; Virker hertil!    
+                 
+                 String[] arr = idStr.split("\\+");
+                     System.out.println("hej");
+                 String user = arr[0];
+                 System.out.println("test; "+ user);
+                 String pass = arr[1]; 
+                 System.out.println("test: "+ pass);
+                 
+                    CredentialJpaController ctrl = new CredentialJpaController(emf);  // Kald til DB
+                    response =  ctrl.findCredential(user,pass); 
                  
                  System.out.println(response);  // hvis nummer mindre end 0, så printes tom "response" = mellemrum
                  System.out.println("tester3");
                  } else {
-               //  response = CredentialManager.getUsersAsJSON();   // flere bruger som Json
+                 //  response = CredentialManager.getUsersAsJSON();   // flere bruger som Json
                      
                      System.out.println(response);
                  System.out.println("tester4");
