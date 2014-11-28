@@ -27,16 +27,16 @@ public class CredentialJpaController implements Serializable, CredentialManager{
         this.emf = emf;
     }
     
-  /*  public CredentialJpaController(){
-        this.emf = getEntityManager();
-    }  //evt controller
-  */  
+  //  public CredentialJpaController(){
+   //     this.emf = getEntityManagerFactory();
+   // }  //evt controller
+  
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
+/*
     public void create(Credential credential) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
@@ -99,7 +99,8 @@ public class CredentialJpaController implements Serializable, CredentialManager{
             }
         }
     }
-
+*/
+    @Override
     public List<Credential> findCredentialEntities() {
         return findCredentialEntities(true, -1, -1);
     }
@@ -124,14 +125,25 @@ public class CredentialJpaController implements Serializable, CredentialManager{
         }
     }
 
-    public Credential findCredential(String id) {
-        EntityManager em = getEntityManager();
-        try {
-            return em.find(Credential.class, id);
-        } finally {
-            em.close();
-        }
+    @Override
+    public String findCredential(String user, String pass){    // throws NotFoundException
+         EntityManager em = getEntityManager();
+         try{
+     
+            if(user == null){
+                return "fail";                                 //throw new NotFoundException("Fail");
+                    } else {
+                        Credential user1 = em.find(Credential.class, user);
+                    if (!user1.getPassword().equals(pass)) {
+                        return "false";                        //throw new NotFoundException("Fail");
+                    }
+                    return "" + user1.getRole();
+                    } 
+            }finally{
+                    em.close();
+                    }
     }
+
 
     public int getCredentialCount() {
         EntityManager em = getEntityManager();
@@ -144,6 +156,5 @@ public class CredentialJpaController implements Serializable, CredentialManager{
         } finally {
             em.close();
         }
-    }
-    
+    }  
 }

@@ -14,12 +14,12 @@ public class App {
         System.out.println("clean & build");
       
         
-        /* ***************** for tjeck! *****************/
+        /* ***************** for tjeck! 
        EntityManagerFactory emf;
        emf = Persistence.createEntityManagerFactory("AuthenticationServerPU");
        EntityManager em = emf.createEntityManager();
         
-        
+        *****************/
         
         
         

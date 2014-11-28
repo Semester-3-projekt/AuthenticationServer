@@ -38,7 +38,7 @@ public class WWW {
                 System.out.println(method);
 
                 
-                 switch (method) {
+            switch (method) {
                  case "GET":
                  System.out.println("tester1");
                  try {
@@ -47,10 +47,11 @@ public class WWW {
                  System.out.println("tester2");
                  if (lastIndex > 0) {
                  String idStr = path.substring(lastIndex + 1);
-                 System.out.println(idStr);
-              //   int id = Integer.parseInt(idStr);
-               //  CredentialJpaController cont  = new CredentialJpaController();  //  skal der laves en ny instans af denne først ??
-                // response = cont.findCredential(); 
+                 String user = idStr.split("+")[0];
+                 String pass = idStr.split("+")[1];
+                 //   int id = Integer.parseInt(idStr);
+                 //CredentialJpaController cont  = new CredentialJpaController();    //  skal der laves en ny instans af denne først ?? 
+                 // response =  CredentialJpaController.findCredential(user,pass); 
                  
                  System.out.println(response);  // hvis nummer mindre end 0, så printes tom "response" = mellemrum
                  System.out.println("tester3");

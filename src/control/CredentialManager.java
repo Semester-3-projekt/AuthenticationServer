@@ -17,7 +17,7 @@ public interface CredentialManager {
     
 List<Credential> findCredentialEntities();
 
-public Credential findCredential(String id);
+public String findCredential(String user, String pass);
 
 
 
