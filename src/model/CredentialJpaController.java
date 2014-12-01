@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.exceptions.NonexistentEntityException;
@@ -26,7 +27,9 @@ public class CredentialJpaController implements Serializable, CredentialManager{
     public CredentialJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+    /*private static EntityManagerFactory emf = 
+        Persistence.createEntityManagerFactory("AuthenticationServerPU");
+    */
   //  public CredentialJpaController(){
    //     this.emf = getEntityManagerFactory();
    // }  //evt controller
