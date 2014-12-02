@@ -1,5 +1,6 @@
 package httpServer;
 
+import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -16,7 +17,7 @@ public class WWW {
             = Persistence.createEntityManagerFactory("AuthenticationServerPU");
 
     private final HttpServer server;
-
+    
     public WWW(int port) throws IOException {
         server = HttpServer.create();
         server.bind(new InetSocketAddress(port), 0);
@@ -138,7 +139,9 @@ public class WWW {
                 he.getResponseHeaders().add("Content-Type", "application/json");
                 he.sendResponseHeaders(status, 0);
                 try (OutputStream os = he.getResponseBody()) {
-                    os.write(response.getBytes());
+                    // os.write(response.getBytes());
+                    Gson gson = new Gson();
+                    os.write(gson.toJson(response).getBytes());    // Json array sendes af hele player array 
                 }
             }
 

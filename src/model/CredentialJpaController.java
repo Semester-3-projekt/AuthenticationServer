@@ -132,11 +132,10 @@ public class CredentialJpaController implements Serializable, CredentialManager{
     public String findCredential(String user, String pass){    // throws NotFoundException
          EntityManager em = getEntityManager();
          try{
-     
-            if(user == null){
+     Credential user1 = em.find(Credential.class, user);
+            if(user1 == null){
                 return "fail";                                 //throw new NotFoundException("Fail");
-                    } else {
-                        Credential user1 = em.find(Credential.class, user);
+                    } else {   
                     if (!user1.getPassword().equals(pass)) {
                         return "false";                        //throw new NotFoundException("Fail");
                     }
