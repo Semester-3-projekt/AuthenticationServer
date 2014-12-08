@@ -14,7 +14,7 @@ import model.CredentialJpaController;
 public class WWW {
 
     private static EntityManagerFactory emf
-            = Persistence.createEntityManagerFactory("AuthenticationServerPU");
+            = Persistence.createEntityManagerFactory("FinalDb"); //AuthenticationServerPU er test databasen, FinalDb er den på Oracle
 
     private final HttpServer server;
     
