@@ -22,7 +22,7 @@ public class AuthenticationServer {
      * @param args the command line arguments
      */
     private static EntityManagerFactory emf = 
-        Persistence.createEntityManagerFactory("AuthenticationServerPU"); 
+        Persistence.createEntityManagerFactory("FinalDb"); 
     
     public static void main(String[] args) {
         

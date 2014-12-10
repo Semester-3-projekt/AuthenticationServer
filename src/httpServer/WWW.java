@@ -18,9 +18,10 @@ public class WWW {
 
     private final HttpServer server;
     
-    public WWW(int port) throws IOException {
+    public WWW(int port, String ip) throws IOException {
+        
         server = HttpServer.create();
-        server.bind(new InetSocketAddress(port), 0);
+        server.bind(new InetSocketAddress(ip, port), 0);
         server.createContext("/connect", createContext());
 
 //        server.createContext("/getExternalJson", JsonRedirect());   // kald efter extern json

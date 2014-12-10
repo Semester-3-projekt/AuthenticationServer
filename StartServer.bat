@@ -1,0 +1,1 @@
+java -cp AuthenticationServer.jar control.App 8080 100.85.100.41
