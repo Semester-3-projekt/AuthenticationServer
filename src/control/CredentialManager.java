@@ -7,7 +7,6 @@ package control;
 
 import java.util.List;
 import model.Credential;
-import model.CredentialJpaController;
 
 /**
  *

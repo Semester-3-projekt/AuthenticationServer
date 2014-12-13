@@ -24,7 +24,6 @@ public class WWW {
         server.bind(new InetSocketAddress(ip, port), 0);
         server.createContext("/connect", createContext());
 
-//        server.createContext("/getExternalJson", JsonRedirect());   // kald efter extern json
     }
 
     public void start() {
@@ -69,7 +68,6 @@ public class WWW {
                                 System.out.println(response);  // hvis nummer mindre end 0, så printes tom "response" = mellemrum
 
                             } else {
-                                //  response = CredentialManager.getUsersAsJSON();   // flere bruger som Json
 
                                 System.out.println(response);
                                 System.out.println("tester4");
@@ -81,10 +79,7 @@ public class WWW {
                             status = 404;
                             nfe.getMessage();
                         }
-                        //                    catch (NotFoundException nfe) {
-                        //                        response = nfe.getMessage();
-                        //                        status = 404;
-                        //                    }
+                       
                         break;
                     /*
                  
@@ -140,7 +135,6 @@ public class WWW {
                 he.getResponseHeaders().add("Content-Type", "application/json");
                 he.sendResponseHeaders(status, 0);
                 try (OutputStream os = he.getResponseBody()) {
-                    // os.write(response.getBytes());
                     Gson gson = new Gson();
                     os.write(gson.toJson(response).getBytes());    // Json array sendes af hele player array 
                 }
@@ -150,10 +144,3 @@ public class WWW {
     }
 
 }
-
-/*
- private HttpHandler JsonRedirect() {
-
- throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
- }
- */

@@ -21,12 +21,6 @@ public class App {
         service.start();
         System.out.println("clean & build");
 
-        /* ***************** for tjeck! 
-         EntityManagerFactory emf;
-         emf = Persistence.createEntityManagerFactory("AuthenticationServerPU");
-         EntityManager em = emf.createEntityManager();
-        
-         *****************/
     }
 
 }
